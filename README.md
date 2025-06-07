@@ -125,3 +125,27 @@ Install the hooks in git using this command
 poetry run pre-commit install
 ```
 
+### Forcing constraints on commit messages
+
+```YAML
+repos:
+  # Ruff hooks for linting and formatting
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.8 # Check for the latest stable release!
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  # Hook for enforcing Conventional Commits
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v2.4.0 # Check for the latest stable release of this hook!
+    hooks:
+      - id: conventional-pre-commit
+        # This hook runs during the 'commit-msg' stage
+        # stages: [commit-msg] # This is the default stage for commit message hooks
+        args:
+          - feat # Allow 'feat:'
+          - fix  # Allow 'fix:'
+```
+
