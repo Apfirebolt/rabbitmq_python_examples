@@ -104,3 +104,24 @@ poetry run ruff check .
 
 poetry run ruff check --fix .
 ```
+
+## Installing and configuring pre-commit hooks 
+
+Create .pre-commit-config.yaml file at the root of your project. Then, install pre-commit
+
+```
+poetry run pre-commit install
+```
+
+Run pre-commit hooks manually on all the files 
+
+```
+poetry run pre-commit run --all-files
+```
+
+Install the hooks in git using this command
+
+```
+poetry run pre-commit install
+```
+
