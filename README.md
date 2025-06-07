@@ -149,3 +149,11 @@ repos:
           - fix  # Allow 'fix:'
 ```
 
+After modifying .pre-commit-config.yaml, you need to update the installed hooks for the changes to take effect:
+
+```
+poetry run pre-commit install --hook-type commit-msg
+poetry run pre-commit install --hook-type pre-commit # To re-ensure the default pre-commit hook is also installed
+```
+
+You can also run poetry run pre-commit install without specifying --hook-type. By default, pre-commit install installs the pre-commit and commit-msg hooks (among others if default_install_hook_types is configured). However, being explicit with --hook-type commit-msg guarantees it.
