@@ -1,7 +1,8 @@
-import pika
-import time
 import json
 import sys
+import time
+
+import pika
 
 # --- Configuration ---
 RABBITMQ_HOST = 'localhost'

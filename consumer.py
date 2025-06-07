@@ -1,5 +1,6 @@
-import pika
 import sys
+
+import pika
 
 # --- Configuration ---
 RABBITMQ_HOST = 'localhost'

@@ -1,5 +1,6 @@
-import pika
 import sys
+
+import pika
 
 # --- Configuration ---
 RABBITMQ_HOST = 'localhost'
@@ -38,7 +39,7 @@ def declare_exchange(exchange_name, exchange_type):
             passive=True
             )
             print(f"Exchange '{exchange_name}' already exists.")
-        except pika.exceptions.ChannelClosedByBroker as e:
+        except pika.exceptions.ChannelClosedByBroker:
             pass
 
     except pika.exceptions.AMQPConnectionError as e:

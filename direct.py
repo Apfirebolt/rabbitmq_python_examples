@@ -1,6 +1,7 @@
-import pika
-import time
 import random
+import time
+
+import pika
 
 EXCHANGE_NAME = "example_direct_exchange"
 QUEUE_NAMES = ["direct_one", "direct_two", "direct_three"]
@@ -27,7 +28,7 @@ channel = connection.channel()
 channel.exchange_declare(exchange=EXCHANGE_NAME, exchange_type="direct")
 
 # Declare and bind queues with routing keys
-for queue, routing_key in zip(QUEUE_NAMES, ROUTING_KEYS):
+for queue, routing_key in zip(QUEUE_NAMES, ROUTING_KEYS, strict=False):
     channel.queue_declare(queue=queue, durable=True)
     channel.queue_bind(exchange=EXCHANGE_NAME, queue=queue, routing_key=routing_key)
 

@@ -23,3 +23,84 @@ AMQP (Advanced Message Queuing Protocol) is an open-standard application layer p
 At its core, AMQP is about communication between software components where messages are sent to an intermediary (a message broker like RabbitMQ) rather than directly to recipients. This "store and forward" mechanism decouples senders (producers) from receivers (consumers), enhancing system flexibility, scalability, and resilience
 
 AMQP supports various messaging patterns, including point-to-point, publish/subscribe, and request/reply. Its strength lies in its explicit definitions for features like message acknowledgments, persistent messages, and transaction support, ensuring reliable message delivery even in complex distributed systems. This makes AMQP a foundational protocol for building robust, scalable, and event-driven architectures.
+
+## Ruff integration and linting
+
+Ruff is an incredibly fast Python linter and formatter written in Rust. It aims to replace a multitude of Python code quality tools like Flake8, Black, isort, pydocstyle, and more, all within a single, highly performant tool.
+
+This documentation will cover how to use Ruff from the command line, assuming you have it installed (e.g., via pip install ruff or poetry add --group dev ruff).
+
+### Ruff's core commands 
+
+Ruff primarily offers two main modes of operation: linting (checking for code quality issues) and formatting (ensuring consistent code style).
+
+1.1. ruff check (Linting)
+
+The ruff check command is used to identify and report linting violations in your Python code.
+
+To check all Python files in the current directory and its subdirectories:
+
+```
+ruff check .
+```
+
+To check specific files and directories
+
+```
+ruff check my_module.py another_folder/
+```
+
+Example output of ruff 
+
+```
+my_module.py:5:1: F841 Local variable `unused_variable` is assigned to but never used
+my_module.py:10:8: E701 Multiple statements on one line (colon)
+Found 2 errors.
+```
+
+Ruff check command examples with arguments
+
+```
+ruff check --fix .
+
+ruff check --fix-only .
+
+ruff check --diff .
+
+ruff check --select F401,E701 . # Only check for unused imports (F401) and multiple statements on one line (E701)
+
+ruff check --ignore E501 . # Ignore line too long errors
+
+ruff check --show-source .
+
+ruff check --watch .
+
+ruff clean
+
+ruff check --show-files
+
+ruff check --show-settings path/to/my_file.py
+```
+
+1.2. Ruff Formatting
+
+```
+ruff format .
+
+ruff format my_module.py another_folder/
+
+```
+
+Format command with options
+
+```
+ruff format --check .
+```
+
+### Running ruff commands with Poetry 
+
+```
+poetry run ruff check .
+
+poetry run ruff check --fix .
+```

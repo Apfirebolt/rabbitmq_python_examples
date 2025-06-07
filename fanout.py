@@ -1,5 +1,6 @@
-import pika
 import time
+
+import pika
 
 EXCHANGE_NAME = "fanout_example"
 QUEUE_NAMES = ["slow", "medium", "fast"]

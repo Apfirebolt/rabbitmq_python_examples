@@ -14,7 +14,52 @@ dependencies = [
     "requests (>=2.32.3,<3.0.0)"
 ]
 
+[tool.ruff]
+line-length = 88
+target-version = "py310" # Or your target Python version
+
+[tool.ruff.lint]
+select = [
+    "E",  # Error
+    "W",  # Warning
+    "F",  # Pyflakes
+    "I",  # Isort
+    "N",  # Naming conventions
+    "D",  # Pydocstyle (optional, if you use docstrings)
+    "UP", # Pyupgrade
+    "B",  # Bugbear
+    "A",  # Builtin shadowing
+    "TID",# Tidy imports
+    "PLC",# Pylint (convention)
+    "PLE",# Pylint (error)
+    "PLW",# Pylint (warning)
+    "ISC",# flake8-implicit-str-concat
+    "C4", # flake8-comprehensions
+    "RUF",# Ruff specific rules
+]
+ignore = [
+    "E501", # Line too long (handled by formatter, and we set line-length)
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
+    "D105", # Missing docstring in public function
+    "D107", # Missing docstring in __init__
+    "D103", # Missing docstring in public function
+    "D401", # First line of docstring should be in imperative mood
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+docstring-code-format = true
+line-ending = "auto"
+
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.13"
+pre-commit = "^4.2.0"
+

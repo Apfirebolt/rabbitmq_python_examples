@@ -1,5 +1,6 @@
-import pika
 import time
+
+import pika
 
 EXCHANGE_NAME = "example_fanout_exchange"
 QUEUE_NAMES = ["fanout_one", "fanout_two", "fanout_three"]
